@@ -20,9 +20,10 @@
 <body>
   <div ng-controller="mockController" class="mainContents">
     <div class="list-group listDiv">
-      <div class="list-group-item" ng-repeat="message in messages">
+      <div class="list-group-item" ng-repeat="message in messages | orderBy:'date':true">
         <div class="messageAuther"><i class="fa fa-user"></i> {{message.auther}}</div>
         <pre><div class="messageBody">{{message.body}}</div></pre>
+        <div class="messageDateTime">@{{message.date | date:'yyyy/MM/dd HH:mm'}}</div>
       </div>
     </div>
     <hr>

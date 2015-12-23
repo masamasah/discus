@@ -3,7 +3,8 @@ angular.module('Discus', ['mockComments'])
     $scope.onSubmit = function() {
       $scope.messages.push({
         body: $scope.inputedBody,
-        auther: $scope.inputedAuther
+        auther: $scope.inputedAuther,
+        date: new Date()
       });
       $scope.inputedBody = '';
     };
