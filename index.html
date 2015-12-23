@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html ng-app="Discus">
+
 <head>
-<meta charset="UTF-8" />
-<title>Let's Discus!</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="css/main.css" media="all">
+  <meta charset="UTF-8" />
+  <title>Let's Discus!</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css" media="all">
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
-<script src="script/index.js"></script>
-<script src="script/mockComments.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+  <script src="script/index.js"></script>
+  <script src="script/mockComments.js"></script>
 
-<!--
+  <!--
 <script>window.angular || document.write('<script src="lib/angular.min.js"><\/script>');</script>
 -->
 </head>
+
 <body>
   <div ng-controller="mockController">
     <div class="list-group">
@@ -25,12 +27,14 @@
     </div>
 
     <div>
-    <form ng-controller="formController" name="mainForm" ng-submit="onSubmit()" novalidate>
-      <textarea ng-model="inputedBody" class="form-control"></textarea><br>
-      <input id="auther" name="auther" type ="text" ng-model="inputedAuther" class="form-control" required/>
-      <input type="submit" class="form-control" value="&#xf1d8;" ng-disabled="mainForm.$invalid">
-    </form>
+      <form ng-controller="formController" name="mainForm" ng-submit="onSubmit()" novalidate>
+        <textarea ng-model="inputedBody" class="form-control"></textarea>
+        <br>
+        <input id="auther" name="auther" type="text" ng-model="inputedAuther" class="form-control" required/>
+        <input type="submit" class="form-control" value="&#xf1d8;" ng-disabled="mainForm.$invalid">
+      </form>
     </div>
   </div>
 </body>
+
 </html>
