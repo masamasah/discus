@@ -4,7 +4,8 @@ angular.module('Discus', ['mockComments'])
       $scope.messages.push({
         body: $scope.inputedBody,
         auther: $scope.inputedAuther,
-        date: new Date()
+        date: new Date(),
+        liked: 0
       });
       $scope.inputedBody = '';
     };
