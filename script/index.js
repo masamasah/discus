@@ -9,4 +9,9 @@ angular.module('Discus', ['mockComments'])
       });
       $scope.inputedBody = '';
     };
+  }])
+  .controller('listController', ['$scope', function($scope) {
+    $scope.onLike = function(message) {
+      message.liked = message.liked + 1;
+    };
   }]);

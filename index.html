@@ -19,11 +19,11 @@
 
 <body>
   <div ng-controller="mockController" class="mainContents">
-    <div class="list-group listDiv">
+    <div class="list-group listDiv" ng-controller="listController">
       <div class="list-group-item" ng-repeat="message in messages | orderBy:'date':true">
         <div class="messageAuther"><i class="fa fa-user"></i> {{message.auther}} @{{message.date | date:'yyyy/MM/dd HH:mm'}}</div>
         <pre><div class="messageBody">{{message.body}}</div></pre>
-        <a class="messageDateTime"><i class="fa fa-thumbs-o-up"></i> {{message.liked}}</a>
+        <button class="messageDateTime" ng-click="onLike(message)"><i class="fa fa-thumbs-o-up"></i> {{message.liked}}</button>
       </div>
     </div>
     <hr>
