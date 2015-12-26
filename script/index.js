@@ -1,7 +1,16 @@
-angular.module('Discus', ['mockComments'])
-  .controller('formController', ['$scope', function($scope) {
+angular.module('Discus', [])
+  .controller('mainController', ['$scope', function($scope) {
+    $scope.messages = mockMessages();
+    $scope.inputedBody = '';
+    $scope.inputedAuther = '';
+
+    $scope.reply = function(message) {
+      $scope.inputedBody = '[ref:'+message.messageId+']'+"\n"+$scope.inputedBody;
+    };
+
     $scope.onSubmit = function() {
       $scope.messages.push({
+        messageId: 1,
         body: $scope.inputedBody,
         auther: $scope.inputedAuther,
         date: new Date(),
