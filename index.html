@@ -21,7 +21,7 @@
   <div ng-controller="mainController" class="mainContents">
     <div class="list-group listDiv" ng-controller="listController">
       <div class="list-group-item" ng-repeat="message in messages | orderBy:'date':true">
-        <div class="messageAuther"><i class="fa fa-user"></i> {{message.auther}} @{{message.date | date:'yyyy/MM/dd HH:mm'}}</div>
+        <div class="messageAuthor"><i class="fa fa-user"></i> {{message.author}} @{{message.date | date:'yyyy/MM/dd HH:mm'}}</div>
         <pre><div class="messageBody">{{message.body}}</div></pre>
         <button class="like" ng-click="onLike(message)"><i class="fa fa-thumbs-o-up"></i> {{message.liked}}</button>
         <button class="reply" ng-click="reply(message)"><i class="fa fa-reply"></i></button>
@@ -31,7 +31,7 @@
     <div class="inputDiv">
       <form name="mainForm" ng-submit="onSubmit()" novalidate>
         <textarea rows="9" ng-model="inputedBody" class="form-control" placeholder="コメントを入力"></textarea>
-        <input id="auther" name="auther" type="text" ng-model="inputedAuther" class="form-control" placeholder="なまえを入力してください" required/>
+        <input id="author" name="author" type="text" ng-model="inputedAuthor" class="form-control" placeholder="なまえを入力してください" required/>
         <input type="submit" class="form-control" value="&#xf1d8;" ng-disabled="mainForm.$invalid">
       </form>
     </div>

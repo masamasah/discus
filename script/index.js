@@ -2,7 +2,7 @@ angular.module('Discus', [])
   .controller('mainController', ['$scope', function($scope) {
     $scope.messages = mockMessages();
     $scope.inputedBody = '';
-    $scope.inputedAuther = '';
+    $scope.inputedAuthor = '';
 
     $scope.reply = function(message) {
       $scope.inputedBody = '[ref:'+message.messageId+']'+"\n"+$scope.inputedBody;
@@ -12,7 +12,7 @@ angular.module('Discus', [])
       $scope.messages.push({
         messageId: 1,
         body: $scope.inputedBody,
-        auther: $scope.inputedAuther,
+        author: $scope.inputedAuthor,
         date: new Date(),
         liked: 0
       });
