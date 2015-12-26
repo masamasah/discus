@@ -1,9 +1,21 @@
-angular.module('Discus', [])
-  .controller('mainController', ['$scope', function($scope) {
+angular.module('Discus', ['ngResource'])
+  .controller('mainController', ['$scope', '$resource', function($scope, $resource) {
     $scope.inputedBody = '';
     $scope.inputedAuthor = '';
 
-    $scope.messages = mockMessages();
+    var Comments = $resource(
+      'https://9l9p8myt23.execute-api.ap-northeast-1.amazonaws.com/prod/messages'
+    );
+
+    function getComments(){
+      var result = [];
+      var response = Comments.get();
+      result.push(response);
+      return result
+    };
+
+    $scope.messages = getComments();
+
 
     $scope.reply = function(message) {
       $scope.inputedBody = '[ref:' + message.messageId + ']' + "\n" + $scope.inputedBody;
