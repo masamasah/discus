@@ -3,7 +3,7 @@ from __future__ import print_function
 
 import json
 import urllib
-import datetime
+from datetime import datetime
 
 print('Loading function')
 
@@ -13,16 +13,15 @@ def lambda_handler(event, context):
         "messageId":1,
         "body":u"こんにちは",
         "author":u"将之",
-        "date": datetime.date.today().isoformat(),
+        "date": datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
         "liked":1
         },
         {
         "messageId":2,
         "body":u"こんばんは",
         "author":u"平田",
-        "date": datetime.date.today().isoformat(),
+        "date": datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
         "liked":1
         }
         ]
     return jsonobj
-    

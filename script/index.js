@@ -7,7 +7,7 @@ angular.module('Discus', ['ngResource'])
       'https://9l9p8myt23.execute-api.ap-northeast-1.amazonaws.com/prod/messages'
     );
 
-    $scope.messages = Comments.query(function(data, headers){
+    $scope.messages = Comments.query(function(data, headers) {
       result.push(response);
     });
 
@@ -21,7 +21,7 @@ angular.module('Discus', ['ngResource'])
         messageId: 1,
         body: $scope.inputedBody,
         author: $scope.inputedAuthor,
-        date: new Date(),
+        date: dateTimeFormat(new Date()),
         liked: 0
       });
       $scope.inputedBody = '';
