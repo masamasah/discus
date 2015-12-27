@@ -17,6 +17,16 @@ angular.module('Discus', ['ngResource'])
     };
 
     $scope.onSubmit = function() {
+      Comments.save(
+        {
+          messageId: 1,
+          body: $scope.inputedBody,
+          author: $scope.inputedAuthor,
+          date: dateTimeFormat(new Date()),
+          liked: 0
+        },
+        function(){}
+      );
       $scope.messages.push({
         messageId: 1,
         body: $scope.inputedBody,
