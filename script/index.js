@@ -27,10 +27,11 @@ angular.module('Discus', ['ngResource'])
 
       Comments.save(
         newContents,
-        function() {}
+        function() {
+          $scope.messages.push(newContents)
+        }
       );
 
-      $scope.messages.push(newContents);
       $scope.inputedBody = '';
     };
   }])
