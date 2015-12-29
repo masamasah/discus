@@ -17,28 +17,27 @@ angular.module('Discus', ['ngResource'])
     };
 
     $scope.onSubmit = function() {
-      Comments.save(
-        {
-          messageId: 1,
-          body: $scope.inputedBody,
-          author: $scope.inputedAuthor,
-          date: dateTimeFormat(new Date()),
-          liked: 0
-        },
-        function(){}
-      );
-      $scope.messages.push({
+      var newContents = {
         messageId: 1,
         body: $scope.inputedBody,
         author: $scope.inputedAuthor,
         date: dateTimeFormat(new Date()),
         liked: 0
-      });
+      };
+
+      Comments.save(
+        newContents,
+        function() {}
+      );
+
+      $scope.messages.push(newContents);
       $scope.inputedBody = '';
     };
   }])
   .controller('listController', ['$scope', function($scope) {
     $scope.onLike = function(message) {
+      // Todo:hrt メッセージIDをもとにlikedを1プラスして更新する
+
       message.liked = message.liked + 1;
     };
   }]);
