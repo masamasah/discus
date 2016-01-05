@@ -23,9 +23,16 @@
 <body>
   <div ng-controller="mainController" class="mainContents">
     <div class="list-group listDiv" ng-controller="listController">
+      <div class="alert alert-danger" role="alert" ng-show="isConnErr">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        コメントの送信に失敗しました
+      </div>
       <div class="list-group-item" ng-repeat="message in messages | orderBy:'date':true">
         <div class="messageAuthor"><i class="fa fa-user"></i> {{message.author}} @{{message.date | date:'yyyy/MM/dd HH:mm'}}</div>
-        <pre><div class="messageBody">{{message.body}}</div></pre>
+        <pre>
+          <div class="messageBody">{{message.body}}</div>
+        </pre>
         <button class="like" ng-click="onLike(message)"><i class="fa fa-thumbs-o-up"></i> {{message.liked}}</button>
         <button class="reply" ng-click="reply(message)"><i class="fa fa-reply"></i></button>
       </div>

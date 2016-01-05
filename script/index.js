@@ -2,6 +2,7 @@ angular.module('Discus', ['ngResource'])
   .controller('mainController', ['$scope', '$resource', function($scope, $resource) {
     $scope.inputedBody = '';
     $scope.inputedAuthor = '';
+    $scope.isConnErr = true;
 
     var Comments = $resource(
       'https://9l9p8myt23.execute-api.ap-northeast-1.amazonaws.com/prod/messages'
@@ -29,6 +30,10 @@ angular.module('Discus', ['ngResource'])
         newContents,
         function() {
           $scope.messages.push(newContents)
+          $scope.isConnErr = false;
+        },
+        function() {
+          $scope.isConnErr = true;
         }
       );
 
