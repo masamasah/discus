@@ -11,3 +11,13 @@ function dateTimeFormat(date){
 function To2Byte(str){
   return str.length == 1 ? '0'+str : str
 }
+
+function To4Byte(str){
+  return str.length == 4 ? str : To4Byte('0'+str)
+}
+
+function getRandom() {
+  var str = Math.floor((Math.random() * 10000));
+
+  return To4Byte(String(str))
+}

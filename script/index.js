@@ -18,11 +18,12 @@ angular.module('Discus', ['ngResource'])
     };
 
     $scope.onSubmit = function() {
+      var d = dateTimeFormat(new Date())
       var newContents = {
-        messageId: 1,
+        messageId: d.replace(/\s+/g, "")+getRandom(),
         body: $scope.inputedBody,
         author: $scope.inputedAuthor,
-        date: dateTimeFormat(new Date()),
+        date: d,
         liked: 0
       };
 
