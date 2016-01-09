@@ -2,7 +2,7 @@ angular.module('Discus', ['ngResource'])
   .controller('mainController', ['$scope', '$resource', function($scope, $resource) {
     $scope.inputedBody = '';
     $scope.inputedAuthor = '';
-    $scope.isConnErr = true;
+    $scope.isConnErr = false;
 
     var Comments = $resource(
       'https://9l9p8myt23.execute-api.ap-northeast-1.amazonaws.com/prod/messages'
