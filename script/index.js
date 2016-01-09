@@ -24,7 +24,7 @@ angular.module('Discus', ['ngResource'])
         body: $scope.inputedBody,
         author: $scope.inputedAuthor,
         date: d,
-        liked: 0
+        liked: '0'
       };
 
       Comments.save(

@@ -6,31 +6,47 @@ import base64
 import json
 import urllib
 from datetime import datetime
+import boto3
 
-print('Loading function')
+s3 = boto3.resource('s3')
+AWS_S3_BUCKET_NAME = 'discuscomments'
 
+messageIdKey = 'messageId'
+bodyKey = 'body'
+authorKey = 'author'
+dateKey = 'date'
+likedKey = 'liked'
 
 def lambda_handler(event, context):
-    messageId = event['messageId']
-    print('messageId:')
-    print(messageId)
+    messageId = event[messageIdKey].replace('/','')
+    body = event[bodyKey]
+    author = event[authorKey]
+    date = event[dateKey]
+    liked = event[likedKey]
 
-    body = event['body']
-    print('body:')
+    bucket = s3.Bucket(AWS_S3_BUCKET_NAME)
+
+    PUT_OBJECT_KEY_NAME = messageId+'.json'
+
+    obj = bucket.Object(PUT_OBJECT_KEY_NAME)
+    preBody = '{'
+    endBody = '}'
+
+    bodyList = [
+        ':'.join(['"'+messageIdKey+'"','"'+messageId+'"']),
+        ':'.join(['"'+bodyKey+'"','"'+body+'"']),
+        ':'.join(['"'+authorKey+'"','"'+author+'"']),
+        ':'.join(['"'+dateKey+'"','"'+date+'"']),
+        ':'.join(['"'+likedKey+'"','"'+liked+'"'])
+            ]
+
+    body = preBody + ','.join(bodyList) + endBody
+
     print(body)
-
-    author = event['author']
-    print('author:')
-    print(author)
-
-    date = event['date']
-    print('date:')
-    print(date)
-
-    liked = event['liked']
-    print("liked:")
-    print(liked)
-
-
+    response = obj.put(
+        Body=body.encode('utf-8'),
+        ContentEncoding='utf-8',
+        ContentType='text/plane'
+    )
 
     
