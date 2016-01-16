@@ -45,6 +45,6 @@ angular.module('Discus', ['ngResource'])
     $scope.onLike = function(message) {
       // Todo:hrt メッセージIDをもとにlikedを1プラスして更新する
 
-      message.liked = message.liked + 1;
+      message.liked = parseInt(message.liked) + 1;
     };
   }]);
