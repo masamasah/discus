@@ -4,24 +4,26 @@ from __future__ import print_function
 import json
 import urllib
 from datetime import datetime
+import boto3
+from boto3 import Session
+import json
 
-print('Loading function')
+s3 = boto3.resource('s3')
+AWS_S3_BUCKET_NAME = 'discuscomments'
 
 
 def lambda_handler(event, context):
-    jsonobj = [{
-        "messageId":1,
-        "body":u"こんにちは",
-        "author":u"将之",
-        "date": datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
-        "liked":1
-        },
-        {
-        "messageId":2,
-        "body":u"こんばんは",
-        "author":u"平田",
-        "date": datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
-        "liked":1
-        }
-        ]
+    bucket = s3.Bucket(AWS_S3_BUCKET_NAME)
+
+    s3res = Session().resource('s3')
+
+    bucket = s3res.Bucket(AWS_S3_BUCKET_NAME)
+    jsonobj = list()
+
+    for obj in bucket.objects.all():
+        response = obj.get()
+        body = response['Body'].read()
+        print(body.decode('utf-8'))
+        jsonobj.append(json.loads(body.decode('utf-8')))
+
     return jsonobj
