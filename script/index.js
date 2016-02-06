@@ -5,7 +5,7 @@ angular.module('Discus', ['ngResource'])
     $scope.isConnErr = false;
 
     var Comments = $resource(
-      'https://9l9p8myt23.execute-api.ap-northeast-1.amazonaws.com/prod/messages'
+      endpoint
     );
 
     $scope.messages = Comments.query(function(data, headers) {
